@@ -1,0 +1,12 @@
+---
+- name: Instalando no pip o setproctitle
+  pip:
+    name: setproctitle
+
+- name: Aplicando requerimento requirements.txt
+  pip:
+    requirements: /opt/redash/current/requirements.txt
+
+- name: Aplicando requerimento requirements_all_ds.txt
+  pip:
+    requirements: /opt/redash/current/requirements_all_ds.txt

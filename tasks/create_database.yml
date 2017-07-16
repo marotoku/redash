@@ -1,0 +1,18 @@
+---
+- name: Criando usuario do banco de dados da aplicacao
+  become_user: postgres
+  postgresql_user:
+    name: redash
+    password: NULL
+    role_attr_flags: NOCREATEDB,NOSUPERUSER
+
+- name: Criando banco de dados da aplicacao
+  become_user: postgres
+  postgresql_db:
+    name: redash
+    owner: redash
+    state: present
+
+- name: Criando tabelas da aplicacao
+  become_user: redash
+  shell: cd /opt/redash/current; bin/run ./manage.py database create_tables

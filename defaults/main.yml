@@ -1,0 +1,5 @@
+REDASH_BASE_PATH: /opt/redash
+LATEST_URL: https://s3.amazonaws.com/redash-releases/redash.1.0.1.b2833.tar.gz
+VERSION_DIR: /opt/redash/redash.1.0.1.b2833/
+REDASH_TARBALL: /tmp/redash.tar.gz
+FILES_BASE_URL: https://raw.githubusercontent.com/getredash/redash/master/setup/ubuntu/files

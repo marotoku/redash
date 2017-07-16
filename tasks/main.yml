@@ -1,0 +1,8 @@
+---
+- include: create_users.yml
+- include: install_package.yml
+- include: base_redash.yml
+- include: install_package_pip.yml
+- include: create_database.yml
+- include: setup_supervisor.yml
+- include: setup_nginx.yml

@@ -1,0 +1,50 @@
+- name: Criando diretorio da aplicacao
+  file:
+    path: /opt/redash
+    state: directory
+    mode: 0755
+    owner: redash
+
+- name: Realizando import no /opt/redash/.env
+  get_url:
+    url: "{{ FILES_BASE_URL }}/env"
+    dest: /opt/redash/.env
+    url_username: redash
+
+- name: Criando variavel COOKIE_SECRET e realizando export
+  shell: COOKIE_SECRET=$(pwgen -1s 32);echo "export REDASH_COOKIE_SECRET=$COOKIE_SECRET" >> /opt/redash/.env
+
+- name: Baixando ultima versao do redash
+  become_user: redash
+  get_url:
+    url: "{{ LATEST_URL }}"
+    dest: "{{ REDASH_TARBALL }}"
+    owner: redash
+    url_username: redash
+
+- name: Criando estrutura do ultimo deploy
+  become_user: redash
+  file:
+    path: "{{ VERSION_DIR }}"
+    owner: redash
+    mode: 0755
+    state: directory
+
+- name: Descompactando arquivos da aplicacao
+  become_user: redash
+  unarchive:
+    src: "{{ REDASH_TARBALL }}"
+    dest: "{{ VERSION_DIR }}"
+    remote_src: True
+
+- name: Criando link simbolico em /opt/redash/current
+  file:
+    src: "{{ VERSION_DIR }}"
+    dest: /opt/redash/current
+    state: link
+
+- name: Criando link simbolico em /opt/redash/current/.env
+  file:
+    src: /opt/redash/.env
+    dest: /opt/redash/current/.env
+    state: link

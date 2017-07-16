@@ -1,0 +1,7 @@
+---
+- name: Criando usuario redash
+  user:
+    name: redash
+    system: yes
+    createhome: no
+    comment: gecos

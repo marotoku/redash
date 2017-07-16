@@ -1,0 +1,44 @@
+---
+- name: Realizando upgrade nos pacotes
+  apt:
+    upgrade: dist
+    update_cache: yes
+
+- name: Instalado pacotes basicos da aplicacao
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - python-pip
+    - python-dev
+    - nginx
+    - curl
+    - build-essential
+    - pwgen
+
+- name: Instalado dependencias
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - libffi-dev
+    - libmysqlclient-dev
+    - libpq-dev
+    - freetds-dev
+    - libsasl2-dev
+
+- name: Instalado SAML dependencias
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - xmlsec1
+
+- name: Instalado Banco de dados
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - postgresql
+    - redis-server
+    - supervisor

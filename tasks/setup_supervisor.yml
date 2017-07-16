@@ -1,0 +1,7 @@
+---
+- name: Configurando supervisord
+  get_url:
+    url: "{{ FILES_BASE_URL }}/supervisord.conf"
+    dest: /etc/supervisor/conf.d/redash.conf
+  notify:
+    - restart supervisor
