@@ -3,4 +3,4 @@
 Hoje ** _Redash_ ** tem suporte para consultar vários bancos de dados, incluindo: Redshift, Google BigQuery, PostgreSQL, MySQL, Graphite,
 Presto, Google Spreadsheets, Cloudera Impala, Hive e scripts personalizados.
 
-O ** _Redash_ ** é de propriedade de [getredash](https://github.com/getredash/redash) Como eu sou um amante ansible e não encontrei nada no ansible-galaxy, eu decidi criar esse papel para você que usa ansible.
+O ** _Redash_ ** é de propriedade de [getredash](https://github.com/getredash/redash). Pelo fato de eu ser um usuario de ansible e não encontrei nenhuma role criada no ansible-galaxy. Decedi desenvolver esta role baseada na versao 1.0.1.b2833
